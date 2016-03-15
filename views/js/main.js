@@ -527,9 +527,11 @@ function updatePositions() {
   window.performance.mark("mark_start_frame");
   //switched to using getElementsByClassName instead of querySelectorAll
   var items = document.getElementsByClassName('mover');
+  //calls document.body.scrollTop just once instead of each loop call
+  var newScrollTop = document.body.scrollTop;
   //use transform instead of style.left to change position of moving pizzas
   for (var i = 0; i < items.length; i++) {
-    var phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
+    var phase = Math.sin((newScrollTop / 1250) + (i % 5));
     var newPos = items[i].basicLeft + 100 * phase - 625 + 'px';
     items[i].style.transform = "translateX(" + newPos + ")";
   }
