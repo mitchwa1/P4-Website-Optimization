@@ -21,6 +21,27 @@ form {
   display: inline-block;
 }
 
+.small {
+  float: left;
+  display: flex;
+  width: 25%;
+  will-change: transform;
+}
+
+.medium {
+  float: left;
+  display: flex;
+  width: 33.33%;
+  will-change: transform;
+}
+
+.large {
+  float: left;
+  display: flex;
+  width: 50%;
+  will-change: transform;
+}
+
 .centered {
   text-align: center;
 }
@@ -33,11 +54,13 @@ form {
   position: fixed;
   width: 256px;
   z-index: -1;
+  will-change: transform;
 }
 
 .randomPizzaContainer {
   float: left;
   display: flex;
+  will-change: transform;
 }
 
 .randomPizzaContainer:after {

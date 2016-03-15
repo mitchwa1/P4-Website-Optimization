@@ -373,7 +373,8 @@ var pizzaElementGenerator = function(i) {
   pizzaDescriptionContainer = document.createElement("div");
 
   pizzaContainer.classList.add("randomPizzaContainer");
-  pizzaContainer.style.width = "33.33%";
+  pizzaContainer.classList.add("medium"); //initialize to medium size in CSS
+  //pizzaContainer.style.width = "33.33%";
   pizzaContainer.style.height = "325px";
   pizzaContainer.id = "pizza" + i;                // gives each pizza element a unique id
   pizzaImageContainer.classList.add("col-md-6");
@@ -407,20 +408,22 @@ var resizePizzas = function(size) {
     switch(size) {
       case "1":
         document.querySelector("#pizzaSize").innerHTML = "Small";
-        return;
+        return "small";
       case "2":
         document.querySelector("#pizzaSize").innerHTML = "Medium";
-        return;
+        return "medium";
       case "3":
         document.querySelector("#pizzaSize").innerHTML = "Large";
-        return;
+        return "large";
       default:
         console.log("bug in changeSliderLabel");
     }
   }
 
-  changeSliderLabel(size);
+  var dx = changeSliderLabel(size);
 
+   
+/*
    // Returns the size difference to change a pizza element from one size to another. Called by changePizzaSlices(size).
    function determineDx (elem, size) {
     var oldWidth = elem.offsetWidth;
@@ -447,9 +450,11 @@ var resizePizzas = function(size) {
 
     return dx;
   }
+  */
+
 
   // Iterates through pizza elements on the page and changes their widths
-  function changePizzaSizes(size) {
+  /*function changePizzaSizes(size) {
     for (var i = 0; i < document.querySelectorAll(".randomPizzaContainer").length; i++) {
       var dx = determineDx(document.querySelectorAll(".randomPizzaContainer")[i], size);
       var newwidth = (document.querySelectorAll(".randomPizzaContainer")[i].offsetWidth + dx) + 'px';
@@ -466,6 +471,7 @@ var resizePizzas = function(size) {
   //instead of using querySelectorAll it now is faster by using getElementsByClassName. I also moved this
   //outside the loop.
   /*
+  */
   function changePizzaSizes(size) {
     var allPizzaContainers = document.getElementsByClassName("randomPizzaContainer");
     for (var i = 0; i < allPizzaContainers.length; i++) {
@@ -473,7 +479,7 @@ var resizePizzas = function(size) {
       allPizzaContainers[i].className = "randomPizzaContainer " + dx;
     }
   }
-  */
+  
 
   changePizzaSizes(size);
 
